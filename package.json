@@ -1,0 +1,36 @@
+{
+  "name": "amplitude-bot",
+  "version": "2.0.0",
+  "description": "a discord music bot written in typescript",
+  "main": "bin/main.js",
+  "engines": {
+    "node": "8.3.0",
+    "npm": "5.3.0"
+  },
+  "scripts": {
+    "test": "gulp transpile && node bin/main.js",
+    "postinstall": "npm run test"
+  },
+  "keywords": [
+    "music",
+    "discord",
+    "amplitude",
+    "bot",
+    "typescript"
+  ],
+  "author": "Damon Ezard",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^8.0.19",
+    "@types/snekfetch": "^3.1.0",
+    "del": "^3.0.0",
+    "ffmpeg-binaries": "^3.2.2-3",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.2.1",
+    "node-opus": "^0.2.6",
+    "tslint": "^5.5.0",
+    "typescript": "^2.4.2",
+    "yamdbf": "^3.0.1",
+    "ytdl-core": "^0.15.0"
+  }
+}

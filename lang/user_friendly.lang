@@ -1,0 +1,297 @@
+[CMD_BLACKLIST_ERR_NOSELF]
+You can not blacklist your own account.
+
+[CMD_BLACKLIST_ERR_NOBOT]
+Bots cannot call commands, so they don't need to be blacklisted.
+
+[CMD_BLACKLIST_ERR_OWNERONLY]
+Only my owner may blacklist globally.
+
+[CMD_BLACKLIST_ERR_ALREADYGLOBAL]
+That user is already globally blacklisted.
+
+[CMD_BLACKLIST_ERR_BADTARGET]
+You may not use this command on that person.
+
+[CMD_BLACKLIST_ERR_ALREADYBLACKLISTED]
+That user is already blacklisted in this server.
+
+[CMD_BLACKLIST_GLOBALSUCCESS]
+Added {{ user }} to the global blacklist.
+
+[CMD_BLACKLIST_SUCCESS]
+Added {{ user }} to the blacklist for this server.
+
+[CMD_WHITELIST_ERR_OWNERONLY]
+Only my owner may remove a user from the global blacklist.
+
+[CMD_WHITELIST_ERR_NOTGLOBAL]
+That user is not currently on the global blacklist.
+
+[CMD_WHITELIST_ERR_NOTBLACKLISTED]
+That user is not currently blacklisted in this server.
+
+[CMD_WHITELIST_GLOBALSUCCESS]
+Removed {{ user }} from the global blacklist.
+
+[CMD_WHITELIST_SUCCESS]
+Removed {{ user }} from the blacklist for this server.
+
+[CMD_CLEARLIMIT_UNKNOWN_COMMAND]
+That command doesn't exist!
+
+[CMD_CLEARLIMIT_SUCCESS]
+Successfully cleared role limits for command: `{{ commandName }}`
+
+[CMD_DISABLEGROUP_ERR_NOEXIST]
+Command group "{{ group }}" does not exist.
+
+[CMD_DISABLEGROUP_ERR_DISABLED]
+Command group "{{ group }}" is already disabled or is not allowed to be disabled.
+
+[CMD_DISABLEGROUP_SUCCESS]
+**Disabled command group "{{ group }}"**
+
+[CMD_ENABLEGROUP_ERR_NOEXIST]
+Command group "{{ group }}" does not exist.
+
+[CMD_ENABLEGROUP_ERR_ENABLED]
+Command group "{{ group }}" is already enabled.
+
+[CMD_ENABLEGROUP_SUCCESS]
+**Enabled command group "{{ group }}"**
+
+[CMD_EVAL_ERR_NOCODE]
+**ERROR:**
+```xl
+No code provided to evaluate.
+```
+
+[CMD_EVAL_RESULT]
+**INPUT:**
+```js
+{{ code }}
+```
+**OUTPUT:**
+```xl
+{{ result }}
+```
+
+[CMD_EVAL_ERROR]
+**INPUT:**
+```js
+{{ code }}
+```
+**ERROR:**
+```xl
+{{ error }}
+```
+
+[CMD_HELP_COMMAND_LIST]
+Available commands: (Commands marked with `*` are server-only)
+```ldif
+{{ commandList }}
+## A newline after the end of this codeblock gives
+## weird spacing between it and the last line.
+## I don't recommend using one
+```Use `{{ usage }}` or `{{ mentionUsage }}` for more info
+
+[CMD_HELP_UNKNOWN_COMMAND]
+A command by that name could not be found or you do
+not have permission to view it.
+
+[CMD_HELP_SERVERONLY]
+[Server Only]
+
+[CMD_HELP_OWNERONLY]
+[Owner Only]
+
+[CMD_HELP_ALIASES]
+## 'Aliases: foo, bar' | 'Alias: foo'
+{{! args.aliases.split(',').length > 1 ? 'Aliases' : 'Alias' !}}: {{ aliases }}
+
+[CMD_HELP_CODEBLOCK]
+## I feel ldif is the best codeblock language for
+## displaying all of the help commands but it could
+## be changed without any consequence if desired
+```ldif
+{{ serverOnly ?}}
+{{ ownerOnly ?}}
+Command: {{ commandName }}
+Description: {{ desc }}
+{{ aliasText ?}}
+Usage: {{ usage }}
+{{ info ?}}
+```
+
+[CMD_HELP_REPLY_CMD]
+Sent you a DM with command help information.
+
+[CMD_HELP_REPLY_ALL]
+Sent you a DM with a list of commands.
+
+[CMD_HELP_REPLY_FAIL]
+I couldn't DM help information. Do you have DMs blocked?
+
+[CMD_LIMIT_ERR_UNKNOWN_COMMAND]
+Couldn't find a command with the name `{{ commandName }}`
+
+[CMD_LIMIT_ERR_INVALID_GROUP]
+Cannot limit base commands.
+
+[CMD_LIMIT_ERR_ALREADY_LIMITER]
+Role `{{ roleName }}` is already a limiter for command: `{{ commandName }}`
+
+[CMD_LIMIT_ERR_INVALID_ROLE]
+Failed to find {{!
+    args.invalidRoles.split(',').length > 1 ? 'roles' : 'role'
+!}}: {{ invalidRoles }}
+
+[CMD_LIMIT_ERR_NO_ROLES]
+Failed to add any roles to the command.
+
+[CMD_LIMIT_SUCCESS]
+Successfully added {{!
+    args.roles.split(',').length > 1 ? 'roles' : 'role'
+!}}: {{ roles }} to the limiter for command: `{{ commandName }}`
+
+[CMD_LISTGROUPS_GROUPS]
+Command groups:
+{{!
+    args.groups
+        .split(', ')
+        .map(g => `${args.disabledGroups.split(', ').includes(g) ? '*' : ' '}${g}`)
+        .join('\n')
+!}}
+
+[CMD_RELOAD_ERR_UNKNOWN_COMMAND]
+Command "{{ commandName }}" doesn't exist!
+
+[CMD_RELOAD_SUCCESS]
+{{!
+    args.commandName ? 
+        `Command "${args.commandName}"` :
+        'Commands'
+!}} reloaded. ({{ time }} ms)
+
+[CMD_SETLANG_LIST]
+Available languages: (Language marked with `*` is the current language)
+```css
+{{ langList }}
+## Be sure to preserve the `{{ prefix }}setlang #` part
+```Use `{{ prefix }}setlang #`, where `#` is the number of the language to set the
+language to use for this server
+
+[CMD_SETLANG_ERR_INVALID]
+That is not a valid language choice!
+
+[CMD_SETLANG_SUCCESS]
+Set language for this server to: `{{ lang }}`
+
+[CMD_PREFIX_CURRENT]
+{{!
+    args.prefix ?
+        `Current prefix is \`${args.prefix}\`` :
+        'There is currently no prefix.'
+!}}
+
+[CMD_PREFIX_ERR_CHAR_LIMIT]
+Prefixes may only be up to 10 characters in length.
+
+[CMD_PREFIX_ERR_INVALID_CHARS]
+Prefixes may not contain backticks or backslashes.
+
+[CMD_PREFIX_SUCCESS]
+{{!
+    args.prefix === '' ?
+        'Command prefix removed.' :
+        `Command prefix set to \`${args.prefix}\``
+!}}
+
+[DISPATCHER_ERR_RATELIMIT_EXCEED_GLOBAL]
+You have used too many commands and may not use any more for **{{ time }}**.
+
+[DISPATCHER_ERR_RATELIMIT_EXCEED]
+You have used this command too many times and may not use it again for **{{ time }}**.
+
+[DISPATCHER_ERR_UNKNOWN_COMMAND]
+Sorry, I could not recognize any command in your message.
+Try saying "help" to view a list of commands.
+
+[DISPATCHER_ERR_GUILD_ONLY]
+That command is for servers only. Try saying "help" to view a list of commands.
+
+[DISPATCHER_ERR_MISSING_CLIENT_PERMISSIONS]
+**I must be given the following permission{{!
+    args.missing.split(', ').length > 1 ? 's' : ''
+!}} for that command to be usable in this channel:**
+```css
+{{ missing }}
+```
+
+[DISPATCHER_ERR_MISSING_CALLER_PERMISSIONS]
+**You are missing the following permission{{!
+    args.missing.split(', ').length > 1 ? 's' : ''
+!}} for that command:**
+```css
+{{ missing }}
+```
+
+[DISPATCHER_ERR_MISSING_ROLES]
+## This message is used for the missing roles error
+## and for failing to pass the command limiter
+**You must have {{!
+    args.roles.split(', ').length > 1
+        ? 'one of the following roles'
+        : 'the following role'
+!}} to use that command:**
+```css
+{{ roles }}
+```
+
+[EXPECT_ERR_MISSING_VALUE]
+Incorrect command usage!
+
+[EXPECT_ERR_INVALID_OPTION]
+You didn't use the command correctly!
+
+[EXPECT_ERR_EXPECTED_TYPE]
+## This is a developer error message and does
+## not need to be translated. I have only extracted
+## this string for ease of re-use as it is used a lot
+You didn't use the command correctly!
+
+[RESOLVE_TYPE]
+## Only translate the return values here
+{{!
+    switch (args.type)
+    {
+        case 'User': return 'user';
+        case 'Member': return 'member';
+        case 'BannedUser': return 'banned user';
+        case 'Channel': return 'channel';
+        case 'Role': return 'role';
+        default: return;
+    }
+!}}
+
+[RESOLVE_ERR_RESOLVE_NUMBER]
+You need to provide a number.
+
+[RESOLVE_ERR_RESOLVE_DURATION]
+You need to provide a duration, like: `10m`, `2h`, `1.5d` etc.
+
+[RESOLVE_ERR_RESOLVE_TYPE_ID]
+You need to provide an ID number.
+
+[RESOLVE_ERR_RESOLVE_TYPE_TEXT]
+You need to provide the correct text.
+
+[RESOLVE_ERR_MULTIPLE_USER_RESULTS]
+Refine your search with an ID or user mention.
+
+[RESOLVE_ERR_MULTIPLE_CHANNEL_RESULTS]
+Refine your search with an ID or channel mention.
+
+[RESOLVE_ERR_MULTIPLE_ROLE_RESULTS]
+Refine your search with an ID or role mention.
