@@ -77,7 +77,7 @@ export class MusicPlayer {
 					if (!queue.loop && reason !== "seek") queue.videos.shift();
 					this._logger.debug("MusicPlayer", `Dispatcher end: ${reason}`);
 					this._play(queue);
-				}, 1000);
+				}, 500);
 			})
 			.on("error", (err: Error) => {
 				this._logger.error("MusicPlayer", `Dispatcher error: ${err.message}`);
