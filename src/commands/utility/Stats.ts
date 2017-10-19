@@ -18,6 +18,6 @@ export class StatsCommand extends Command<AmpClient> {
 		const queues: string = `**${this.client.music.queues.size}**`;
 		const memory: string = `**${(process.memoryUsage().heapUsed / (1024 ** 2)).toFixed(2)} Mb**`;
 
-		return message.channel.send(`Users: ${users}\nGuilds: ${guilds}\nQueues: ${queues}\n Memory: ${memory}`);
+		return message.channel.send(`Users: ${users}\nGuilds: ${guilds}\nQueues: ${queues}\nMemory: ${memory}\n`);
 	}
 }
