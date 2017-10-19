@@ -11,7 +11,13 @@ import { MusicPlayer } from "./music/MusicPlayer";
 
 const { on, once } = ListenerUtil;
 const logger: Logger = Logger.instance();
-const keys: any = require("../../keys.json");
+
+let keys: any = {};
+try {
+	keys = require("../../keys.json");
+} catch (err) {
+	keys = {};
+}
 
 export class AmpClient extends Client {
 	public readonly music: MusicPlayer;

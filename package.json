@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "gulp transpile && node bin/main.js",
-    "postinstall": "npm run test"
+    "postinstall": "gulp transpile"
   },
   "keywords": [
     "music",
