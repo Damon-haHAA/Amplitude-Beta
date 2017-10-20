@@ -41,15 +41,13 @@ export class MusicPlayer {
 	public async stop(queue: Queue): Promise<void> {
 		const emptyQueue: boolean = !queue.videos.length;
 		const emptyChannel: boolean = queue.voice.members.size < 2;
-		if (emptyQueue || emptyChannel) {
-			if (emptyQueue) await queue.text.send("Out of music!");
-			else if (emptyChannel) await queue.text.send("No one is listening!");
-			try {
-				this.queues.delete(queue.id);
-				await queue.connection.disconnect();
-			} catch (err) {
-				this._logger.error("Music", err.message);
-			}
+		if (emptyQueue) await queue.text.send("Out of music!");
+		else if (emptyChannel) await queue.text.send("No one is listening!");
+		try {
+			this.queues.delete(queue.id);
+			await queue.connection.disconnect();
+		} catch (err) {
+			this._logger.error("Music", err.message);
 		}
 	}
 
