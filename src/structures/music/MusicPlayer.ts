@@ -49,6 +49,7 @@ export class MusicPlayer {
 		} catch (err) {
 			this._logger.error("Music", err.message);
 		}
+		this._logger.debug("MusicPlayer", "thing is still here: " + this.queues.get(queue.id).guild.name);
 	}
 
 	private async _play(queue: Queue): Promise<void> {
