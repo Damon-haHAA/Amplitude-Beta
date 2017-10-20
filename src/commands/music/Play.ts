@@ -40,7 +40,7 @@ export class PlayCommand extends Command<AmpClient> {
 			} else if (voice.members.size === voice.userLimit) {
 				return message.channel.send("That voice channel is full.");
 			}
-			queue = music.queues.create({
+			queue = new Queue({
 				text: message.channel as TextChannel,
 				voice: voice
 			});
