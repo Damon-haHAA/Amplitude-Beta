@@ -35,7 +35,6 @@ export class VolumeCommand extends Command<AmpClient> {
 				volume = 1;
 			}
 		}
-		if (volume > 10) throw "Volume too high!";
 		if (volume < 1) throw "Volume too low";
 		return [message, [volume]];
 	})
