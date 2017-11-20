@@ -64,7 +64,7 @@ export class AmpClient extends Client {
 	@once("pause")
 	private async _onPause(): Promise<void> {
 		await this.setDefaultSetting("lang", "user_friendly");
-		await this.setDefaultSetting("prefix", "beta ");
+		await this.setDefaultSetting("prefix", "amp ");
 		this.emit("continue");
 	}
 
