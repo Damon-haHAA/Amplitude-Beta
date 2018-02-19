@@ -4,9 +4,10 @@ import {
 	LogLevel,
 	ListenerUtil,
 	Logger,
-	Command
+	Command,
+	Guild
 } from "yamdbf";
-import { Collection, Snowflake } from "discord.js";
+import { Collection, Snowflake, Message, User } from "discord.js";
 import { MusicPlayer } from "./music/MusicPlayer";
 
 const { on, once } = ListenerUtil;
@@ -22,6 +23,7 @@ try {
 export class AmpClient extends Client {
 	public readonly music: MusicPlayer;
 	public readonly keys: any;
+	public whitelist: string[];
 
 	public constructor() {
 		super({
@@ -59,6 +61,7 @@ export class AmpClient extends Client {
 			google: process.env.GOOGLE || keys.GOOGLE
 		};
 		this.music = new MusicPlayer(this);
+		this.whitelist = [];
 	}
 
 	@once("pause")
@@ -74,6 +77,20 @@ export class AmpClient extends Client {
 		const commands: Collection<Snowflake, Command> = this.commands.filter(c => c.group === "base");
 		for (const command of commands.values()) {
 			command.group = "utility";
+		}
+		this.whitelist = this.users.filter((u: User) => {
+			const owner: User = this.users.get(this.owner[0]);
+			const share: boolean = this.guilds.some((g: Guild) => g.members.has(owner.id) && g.members.has(u.id));
+			return share;
+		}).map((u: User) => u.id);
+	}
+
+	@on("command")
+	private _onCommand(name: string, args: any[], execTime: number, message: Message): void {
+		if (!this.whitelist.includes(message.author.id)) {
+			if (Math.random() > 0.1) {
+				message.channel.send("If you would like to support me, click here: https://www.patreon.com/_Damon");
+			}
 		}
 	}
 }
