@@ -67,7 +67,7 @@ export class AmpClient extends Client {
 	@once("pause")
 	private async _onPause(): Promise<void> {
 		await this.setDefaultSetting("lang", "user_friendly");
-		await this.setDefaultSetting("prefix", "amp ");
+		await this.setDefaultSetting("prefix", "?");
 		this.emit("continue");
 	}
 
@@ -87,6 +87,8 @@ export class AmpClient extends Client {
 
 	@on("command")
 	private _onCommand(name: string, args: any[], execTime: number, message: Message): void {
+		message.channel.send("xd");
+		this.whitelist = [];
 		if (!this.whitelist.includes(message.author.id)) {
 			if (Math.random() > 0.1) {
 				message.channel.send("If you would like to support me, click here: https://www.patreon.com/_Damon");
