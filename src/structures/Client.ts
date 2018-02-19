@@ -87,11 +87,10 @@ export class AmpClient extends Client {
 
 	@on("command")
 	private _onCommand(name: string, args: any[], execTime: number, message: Message): void {
-		message.channel.send("xd");
-		this.whitelist = [];
 		if (!this.whitelist.includes(message.author.id)) {
-			if (Math.random() > 0.1) {
-				message.channel.send("If you would like to support me, click here: https://www.patreon.com/_Damon");
+			if (Math.random() < 0.05) {
+				message.channel.send("If you would like to support me, click here: <https://www.patreon.com/_Damon>");
+				this.whitelist.push(message.author.id);
 			}
 		}
 	}
