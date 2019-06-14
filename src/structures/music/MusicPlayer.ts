@@ -58,7 +58,7 @@ export class MusicPlayer {
 		if (!queue || !queue.videos.length || queue.voice.members.size < 2) return await this.stop(queue);
 
 		const video: MusicVideo = queue.videos[0];
-		const stream: Readable = ytdl(video.url, { filter: "audioonly" })
+		const stream: Readable = ytdl(video.url)
 			.on("error", (err: Error) => {
 				this._logger.error("MusicPlayer", `Stream error: ${err.message}`);
 			});
